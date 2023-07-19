@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO App</title>
+</head>
+<body>
+    <div class="container">
+        <form method="post" action="/">
+            <input name="TodoVal" placeholder="Add todo here..." type="text" required>
+            <button type="submit">Submit</button>   
+        </form>
+        <% if(data) { %>
+            <% data.forEach(todoValue=>{ %>
+                <div class="todo-container"> hii
+                    <div class="todo-Val"> <%= todoValue.value %> </div>
+                </div>
+                <% })%>
+            <%  }%>
+    </div>
+</body>
+</html>
