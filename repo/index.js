@@ -12,7 +12,6 @@ app.use(bodyParser.json())
 
    TODO.find().then(result=>{
        res.render('index', { data : result })
-       console.log(result)
    })
  })
 
@@ -23,6 +22,12 @@ app.use(bodyParser.json())
     todo.save().then(result=>{
         res.redirect('/')
     })
+ })
+
+ app.post('/removetask/:id',(req,res)=>{
+    TODO.findByIdAndDelete(req.params.id).then(result=>{console.log(result)})
+    console.log(req.params.id)
+    res.redirect(303,'/')
  })
 
 //  app.get('/api/customers', async (req,res)=>{

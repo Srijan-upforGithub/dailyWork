@@ -1,23 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TODO App</title>
 </head>
+<style>
+    .container{
+        max-width: 1400px;
+    box-sizing: border-box;
+    margin: auto;
+    background-color: grey;
+    text-align: center;
+}
+    .todoName{
+    height: 25px;
+    width: 400px;
+    margin: 14px;
+    padding: 0px 10px;
+    border-radius: 10px;
+    border: none;
+}
+    .submit{
+    height: 27px;
+    width: 74px;
+    border-width: 3px;
+    border-radius: 6px;
+    background-color: rgb(102,122,141);
+    color: darkred;
+    }
+    .todo-Val{
+    border: 1px solid black;
+    width: 338px;
+}
+    .todo-container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+}
+
+</style>
+
 <body>
     <div class="container">
         <form method="post" action="/">
-            <input name="TodoVal" placeholder="Add todo here..." type="text" required>
-            <button type="submit">Submit</button>   
+            <input name="TodoVal" placeholder="Add todo here..." type="text" class="todoName" required>
+            <button type="submit" class="submit">Submit</button>
         </form>
-        <% if(data) { %>
-            <% data.forEach(todoValue=>{ %>
-                <div class="todo-container"> hii
-                    <div class="todo-Val"> <%= todoValue.value %> </div>
-                </div>
-                <% })%>
-            <%  }%>
+        <div class="todo-container">
+            <% if(data) { %>
+                <% data.forEach(todoValue=>{ %>
+                    <div class="todo-Val">
+                        <%= todoValue.value %>
+                        <%= todoValue._id %>
+                    </div >
+                    <form method="post" action="/removetask/<%= todoValue._id %>">
+                        <input type="submit" value="Delete" id="del-btn"  />
+                        </form>
+                    <% })%>
+                        <% }%>
+                
+        </div>
     </div>
 </body>
+
 </html>
